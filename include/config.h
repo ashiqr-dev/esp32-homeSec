@@ -1,0 +1,1 @@
+#define MDNS_HOSTNAME "esp32" // ping esp32.local
