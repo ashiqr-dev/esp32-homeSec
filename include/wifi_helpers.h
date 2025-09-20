@@ -16,3 +16,10 @@ class mDNSService
     public:
 	int8_t init(const char *hostname);
 };
+
+class OTAService
+{
+    public:
+	void init(const char *hostname, const char *pass);
+	void handle();
+};
