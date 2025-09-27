@@ -49,9 +49,12 @@ void loop()
 	ota.handle();
 
 	TelegramMessage msg = telegram.getNextMessage();
-	if (msg.chat_id != "" && msg.text != "")
+	String safe_msg = sanitize(msg.text);
+	String safe_from = sanitize(msg.from);
+
+	if (msg.chat_id != "" && safe_msg != "")
 	{
-		if(!telegram.resolveCommand(msg.chat_id, msg.text, msg.from))
+		if(!telegram.resolveCommand(msg.chat_id, safe_msg, safe_from))
 		{
 			Serial.print("[BOT ] Message failed to send!");
 		}

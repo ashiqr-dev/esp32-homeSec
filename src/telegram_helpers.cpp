@@ -61,7 +61,7 @@ bool TelegramService::resolveCommand(String chat_id, String msg, String sender_n
 	}
 	else if (msg == "/arm")
 	{
-		// Set arm on here
+		// Set arm true here
 	}
 	else if (msg == "/disarm")
 	{
@@ -82,4 +82,19 @@ bool TelegramService::resolveCommand(String chat_id, String msg, String sender_n
 	}
 
 	return true;
+}
+
+// Returns a string containing only ASCII characters in the printable range
+String sanitize(const String &input, size_t maxLen)
+{
+	String result;
+	for (size_t i = 0; i < input.length() && result.length() < maxLen; ++i)
+	{
+		char c = input[i];
+		if (c >= 32 && c <= 126)
+		{
+			result += c;
+		}
+	}
+	return result;
 }

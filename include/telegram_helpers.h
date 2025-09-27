@@ -10,6 +10,8 @@ struct TelegramMessage
 	String from;
 };
 
+String sanitize(const String &input, size_t maxLen = 64);
+
 class TelegramService
 {
 public:
